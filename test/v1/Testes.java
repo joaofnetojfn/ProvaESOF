@@ -12,28 +12,86 @@ public class Testes {
 		Pessoa p1 = new Pessoa("Fulano", false, false);
 		Pessoa p2 = new Pessoa("Ciclana", false, false);
 		Pessoa p3 = new Pessoa("Beltrana", false, false);
-		
+
 		Fila f = new Fila();
-		
+
+		f.addPessoa(p1);
+		f.addPessoa(p2);
+		f.addPessoa(p3);
+
+		Pessoa proximo = f.proximoFila();
+
+		Assert.assertEquals(proximo.getNome(), "Fulano");
+
+		f.removePessoa(proximo);
+		proximo = f.proximoFila();
+
+		Assert.assertEquals(proximo.getNome(), "Ciclana");
+
+		f.removePessoa(proximo);
+		proximo = f.proximoFila();
+
+		Assert.assertEquals(proximo.getNome(), "Beltrana");
+
+		f.removePessoa(proximo);
+	}
+
+	public void TesteGravida() {
+		Pessoa p1 = new Pessoa("João Neto", false, false);
+		Pessoa p2 = new Pessoa("Fulana", true, false);
+		Pessoa p3 = new Pessoa("Ciclana", false, false);
+
+		Fila f = new Fila();
+
 		f.addPessoa(p1);
 		f.addPessoa(p2);
 		f.addPessoa(p3);
 		
 		Pessoa proximo = f.proximoFila();
-		
-		Assert.assertEquals(proximo.getNome(), "Fulano");
-		
+
+		Assert.assertEquals(proximo.getNome(), "Fulana");
+
 		f.removePessoa(proximo);
 		proximo = f.proximoFila();
-			
+
+		Assert.assertEquals(proximo.getNome(), "João Neto");
+
+		f.removePessoa(proximo);
+		proximo = f.proximoFila();
+
 		Assert.assertEquals(proximo.getNome(), "Ciclana");
+
+		f.removePessoa(proximo);
 		
+	}
+	
+	public void TesteIdoso() {
+		Pessoa p1 = new Pessoa("João Neto", false, false);
+		Pessoa p2 = new Pessoa("Fulana", true, false);
+		Pessoa p3 = new Pessoa("Beltrano", false, true);
+
+		Fila f = new Fila();
+
+		f.addPessoa(p1);
+		f.addPessoa(p2);
+		f.addPessoa(p3);
+		
+		Pessoa proximo = f.proximoFila();
+
+		Assert.assertEquals(proximo.getNome(), "Beltrano");
+
 		f.removePessoa(proximo);
 		proximo = f.proximoFila();
-		
-		Assert.assertEquals(proximo.getNome(), "Beltrana");
-		
+
+		Assert.assertEquals(proximo.getNome(), "Fulana");
+
 		f.removePessoa(proximo);
+		proximo = f.proximoFila();
+
+		Assert.assertEquals(proximo.getNome(), "João Neto");
+
+		f.removePessoa(proximo);
+		
 	}
 
 }
